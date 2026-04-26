@@ -60,5 +60,28 @@ namespace TestNinja.UnitTests
             var result = _math.Max(a, b);
             Assert.That(result, Is.EqualTo(expextedResult));
         }
+
+
+        [Test]
+        public void GetOddNumbers_LimitIsGreaterThanZero_ReturnOddNumbersUpToLimit()
+        {
+            var result = _math.GetOddNumbers(5);
+
+            //General
+            //Assert.That(result, Is.Not.Empty);
+            //Assert.That(result.Count(), Is.EqualTo(3));
+
+            //Specific
+            //Assert.That(result, Does.Contain(1));
+            //Assert.That(result, Does.Contain(3));
+            //Assert.That(result, Does.Contain(5));
+
+            //More Specific
+            //Assert.That(result, Is.EquivalentTo(new[] { 1, 3, 5 })); // This will pass even if the order of numbers is not correct.
+            Assert.That(result, Is.EqualTo(new[] { 1, 3, 5 })); // This will fail if the order of numbers is not correct.
+
+            //Assert.That(result, Is.Ordered); // This will pass if the numbers are in ascending order.
+            //Assert.That(result, Is.Unique); // This will pass if there are no duplicate numbers in the result.
+        }
     }
 }
