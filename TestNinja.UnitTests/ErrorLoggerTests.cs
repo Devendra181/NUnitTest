@@ -53,6 +53,9 @@ namespace TestNinja.UnitTests
             //Assert
             Assert.That(id, Is.Not.EqualTo(Guid.Empty));
         }
-         
+
+        //We avoid testing the private method OnErrorLogged
+        //directly because it is an implementation detail of
+        //the ErrorLogger class and it is not part of the public API.
     }
 }
