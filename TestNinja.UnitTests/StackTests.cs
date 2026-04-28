@@ -61,7 +61,7 @@ namespace TestNinja.UnitTests
             Assert.That(stack.Count, Is.EqualTo(1));
         }
 
-            
+
         [Test]
         public void Peek_EmptyStack_ThrowInvalidOperationException()
         {
@@ -79,6 +79,15 @@ namespace TestNinja.UnitTests
             Assert.That(result, Is.EqualTo("b"));
         }
 
+        [Test]
+        public void Peek_StackWithObjects_DoesNotRemoveTheLastObjectAddedToTheStack()
+        {
+            var stack = new TestNinja.Fundamentals.Stack<string>();
+            stack.Push("a");
+            stack.Push("b");
+            stack.Peek();
+            Assert.That(stack.Count, Is.EqualTo(2));
 
+        }
     }
 }
