@@ -9,16 +9,42 @@ namespace TestNinja.Mocking
 {
     public class VideoService
     {
-        public IFileReader FileReader { get; set; }
 
+        //Property injection
+
+        //public IFileReader FileReader { get; set; }
+
+        //public VideoService()
+        //{
+        //    FileReader = new FileReader();
+        //}
+
+
+        //Constructor injection
+        private readonly IFileReader _fileReader;
+
+        //For Production code
         public VideoService()
         {
-            FileReader = new FileReader();
+            _fileReader = new FileReader();
         }
 
-        public string ReadVideoTitle()
+        //For Test code
+        public VideoService(IFileReader fileReader)
         {
-            var str = FileReader.Read("video.txt");
+            _fileReader = fileReader;
+        }
+
+
+        //Or Combined injection
+        //public VideoService(IFileReader fileReader = null)
+        //{
+        //    _fileReader = fileReader ?? new FileReader();
+        //}
+
+        public string ReadVideoTitle()  //ReadVideoTitle(IFileReader fileReader) Method injection
+        {
+            var str = _fileReader.Read("video.txt");
             var video = JsonConvert.DeserializeObject<Video>(str);
             if (video == null)
                 return "Error parsing the video.";
