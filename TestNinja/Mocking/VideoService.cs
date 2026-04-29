@@ -36,7 +36,7 @@ namespace TestNinja.Mocking
         }
 
 
-        //Or Combined injection
+        //Or Combined injection  works but not ideal, Poor man's DI
         //public VideoService(IFileReader fileReader = null)
         //{
         //    _fileReader = fileReader ?? new FileReader();
