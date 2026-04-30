@@ -28,7 +28,7 @@ namespace TestNinja.UnitTests.Mocking
         {
             var order = new Order();
             _orderService.PlaceOrder(order);
-            _moqStorage.Verify(s => s.Store(order));
+            _moqStorage.Verify(s => s.Store(order)); //verify method is called with the same order object
         }
     }
 }
