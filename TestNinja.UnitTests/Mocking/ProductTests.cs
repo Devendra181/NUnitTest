@@ -23,10 +23,10 @@ namespace TestNinja.UnitTests.Mocking
         [Test]
         public void GetPrice_CustomerIsGold_Returns70PercentOfListPrice2()
         {
+            var product = new Product { ListPrice = 100 };
+
             var customer = new Mock<ICustomer>();
             customer.Setup(c => c.IsGold).Returns(true);
-
-            var product = new Product { ListPrice = 100 };
 
             var result = product.GetPrice(customer.Object);
 
