@@ -1,4 +1,6 @@
-﻿namespace TestNinja.Mocking
+﻿using System;
+
+namespace TestNinja.Mocking
 {
     public class Product
     {
@@ -6,6 +8,9 @@
 
         public float GetPrice(ICustomer customer)
         {
+            if(customer == null)
+                throw new ArgumentNullException(nameof(customer));
+
             if (customer.IsGold)
                 return ListPrice * 0.7f;
 
